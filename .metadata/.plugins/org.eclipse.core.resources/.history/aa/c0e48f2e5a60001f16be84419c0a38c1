@@ -1,0 +1,5 @@
+package com.policy.policymodule.exception;
+
+public class GlobalExceptionHandler {
+
+}

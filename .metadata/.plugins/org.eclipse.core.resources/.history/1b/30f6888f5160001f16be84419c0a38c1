@@ -1,0 +1,19 @@
+package com.policy.policymodule.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.policy.policymodule.Repository.PolicyRepository;
+import com.policy.policymodule.entity.Policy;
+
+@Service
+public class PolicyService {
+@Autowired
+ private PolicyRepository policyRepository;
+
+public Policy getPolicyById(Long policyId) {
+    return policyRepository.findById(policyId)
+        .orElseThrow(() -> new RuntimeException("Policy not found"));
+}
+}
+

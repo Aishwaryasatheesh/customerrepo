@@ -1,0 +1,7 @@
+package com.policy.policymodule.Repository;
+
+@Repository
+
+public interface PolicyRepository {
+
+}

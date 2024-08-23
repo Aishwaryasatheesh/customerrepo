@@ -1,0 +1,11 @@
+package com.customer.customerpolicy.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.customer.customerpolicy.entity.Purchase;
+
+	public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
+	    List<Purchase> findByCustomerId(Long customerId);
+	}
