@@ -1,0 +1,16 @@
+package com.customerpolicy.pojo;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PurchasePolicyRequest {
+	 private Long customerId;
+	    private Long policyId;
+	    private String purchaseDate;
+	    private String maturityDate;
+
+}

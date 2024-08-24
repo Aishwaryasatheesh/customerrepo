@@ -1,0 +1,48 @@
+package com.customerpolicy.service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.customerpolicy.entity.Purchased;
+import com.customerpolicy.entity.PurchasedPolicy;
+import com.customerpolicy.exception.CustomerNotFoundException;
+import com.customerpolicy.exception.PolicyNotFoundException;
+import com.customerpolicy.repository.CustomerRepository;
+import com.customerpolicy.repository.PurchaseRepository;
+
+import jakarta.transaction.Transactional;
+
+@Service
+public class PurchasePolicyService {
+@Autowired
+private PurchaseRepository purchasedRepository;
+@Autowired
+CustomerRepository customerRepository;
+@Autowired
+RestTemplate restTemplete;
+
+@Transactional
+public PurchasePolicyByPolicyId("PurchasePolicyRequest purchase") throws PolicyNotFoundException,CustomerNotFoundException{
+	Customer customer = customerRepository.findByEmail(purchaseRepository.getEmail());
+	if(customer==null)
+		throw new CustomerNotFoundException("Please register to purchase a policy");
+	 
+	Policy policy = restTemplete.getForObject("http://localhost:8081/app2/policy/"+purchse.getPolicById(),Policy.class);
+	if(!policy.getActive())	{
+		throw new PolicyNotFoundException("Policy with ID"+ purchese.getPolicyId()+ "not found")
+		else {
+			purchasePolicy purchePolicy = new PurchasePolicy();
+			PurchasePolicy.setPolicyId(purchase.getPolicyId());
+			PurchasePolicy.setCustomer(customer);
+			purchasePolicy.setPremium(policy.getPremium());
+			purchasePolicy.setPurchaseDate(LocalDate.now());
+			purchasePolicy.setMaturityDate(purchasePolicy.getPurchaseDate().plusYears(policy.getMaturityTime()));
+			purchasedRepository.save(purchasePolicy);
+			restTemplete.getForObject("http://localhost:8081/app2/policy/update/"+purchasedRepository.getPolicyId(),Policy.class);
+	}
+}
+}

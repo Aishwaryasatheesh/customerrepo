@@ -1,0 +1,26 @@
+package com.customerpolicy.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.customerpolicy.entity.Customer;
+import com.customerpolicy.exception.CustomerNotFoundException;
+import com.customerpolicy.repository.CustomerRepository;
+
+@Service
+public class CustomerService {
+	@Autowired
+	CustomerRepository customerRepository;
+	@Autowired
+	Customer customer;
+	public Customer registerCustomer(Customer customer) {
+        return customerRepository.save(customer);
+	}
+	public Customer login(String email, String password) throws CustomerNotFoundException {
+         String email2 = customerRepository.findByEmail(email);
+        if (email2 == null || !customer.getPassword().equals(password)) {
+            throw new CustomerNotFoundException("Invalid email or password");
+        }
+        return customer;
+	}
+}

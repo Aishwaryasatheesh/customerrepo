@@ -1,0 +1,5 @@
+package com.customerpolicy.service;
+
+public class PurchaseService {
+
+}

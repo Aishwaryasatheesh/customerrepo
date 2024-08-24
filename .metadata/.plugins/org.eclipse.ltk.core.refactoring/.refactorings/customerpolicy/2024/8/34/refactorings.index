@@ -1,2 +1,30 @@
 1724387491511	Rename compilation unit 'PurchasedRepository.java'
 1724387537417	Rename type 'PurchasedPolicy'
+1724391389749	Rename package 'com.customer.customerpolicy'
+1724392364218	Rename package 'com.customer'
+1724392428208	Rename package 'com.customer.customerpolicy.service'
+1724392443575	Rename package 'com.customer.customerpolicy.controller'
+1724392467944	Rename package 'com.customer.customerpolicy.repository'
+1724392486117	Rename package 'com.customer.customerpolicy.entity'
+1724399761697	Delete element
+1724400533255	Rename type 'Purchase'
+1724400542704	Rename type 'PurchaseRepository'
+1724401438776	Rename type 'Polictmodule'
+1724410977510	Rename compilation unit 'Policymodule.java'
+1724417644330	Rename compilation unit 'PurchasedController.java'
+1724417738347	Delete element
+1724418384264	Delete element
+1724418515316	Rename type 'PurchasedRepository'
+1724427048275	Rename compilation unit 'PurchaseService.java'
+1724427200525	Rename type 'PurchaseController'
+1724427221566	Rename type 'Purchased'
+1724477650897	Rename type 'LohinRequest'
+1724495335711	Delete element
+1724503023431	Delete element
+1724520669419	Copy package
+1724520689309	Delete element
+1724520720083	Rename package 'com.customerpolicy.pojo'
+1724520730284	Copy compilation unit
+1724520740214	Delete element
+1724521167362	Copy file
+1724521182262	Copy file

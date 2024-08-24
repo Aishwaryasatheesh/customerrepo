@@ -1,7 +1,9 @@
 package com.policy.policymodule.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.aop.ThrowsAdvice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,10 +30,13 @@ public Policy viewpolicyById(Long policyid) throws PolicyNotFoundException {
 
 }
 
-public List<Policy> getPoliciesByCoverageType(String coverageType) {
-    return policyRepository.findPolicyByCoverageType(coverageType);
-}
+public List<Policy> getPoliciesByCoverageType(String coverageType) throws PolicyNotFoundException {
+	List<Policy> policy = policyRepository.findPolicyByCoverageType(coverageType);
+	if(policy.isEmpty())
+		throw new PolicyNotFoundException("coverage type Found");
+	return policy;
 }
 
+}
 
 

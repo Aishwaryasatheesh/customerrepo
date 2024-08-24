@@ -1,0 +1,31 @@
+package com.customerpolicy.controller;
+
+import java.time.LocalDate;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.customerpolicy.entity.PurchasedPolicy;
+import com.customerpolicy.exception.CustomerNotFoundException;
+import com.customerpolicy.exception.PolicyNotFoundException;
+import com.customerpolicy.service.PurchasePolicyService;
+
+@RestController
+@RequestMapping("/purchase")
+public class PurchasePolicyController {
+	@Autowired
+	PurchasePolicyService purchaseService;
+	@PostMapping
+    public ResponseEntity<PurchasedPolicy> purchasePolicy(
+            @RequestParam Long policyId,
+            @RequestParam Long customerId,
+            @RequestParam LocalDate maturityDate) {
+        return new ResponseEntity<>(PurchasePolicyService.purchasedPolicy(policyId, customerId, maturityDate), HttpStatus.OK);
+    }
+}

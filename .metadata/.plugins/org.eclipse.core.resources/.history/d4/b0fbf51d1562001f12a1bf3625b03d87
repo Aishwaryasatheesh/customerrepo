@@ -1,0 +1,54 @@
+package com.customerpolicy.service;
+
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.customerpolicy.entity.Customer;
+
+import com.customerpolicy.entity.PurchasedPolicy;
+import com.customerpolicy.exception.CustomerNotFoundException;
+import com.customerpolicy.exception.PolicyNotFoundException;
+import com.customerpolicy.pojo.Policy;
+import com.customerpolicy.pojo.PurchasePolicyRequest;
+import com.customerpolicy.repository.CustomerRepository;
+import com.customerpolicy.repository.PurchaseRepository;
+
+import jakarta.transaction.Transactional;
+
+@Service
+public class PurchasePolicyService {
+@Autowired
+private PurchaseRepository purchasedRepository;
+@Autowired
+CustomerRepository customerRepository;
+@Autowired
+RestTemplate restTemplete;
+public String purchasePolicyByPolicyId(PurchasePolicyRequest purchase) throws PolicyNotFoundException,CustomerNotFoundException {
+    Customer customer = customerRepository.findById(purchase.getcustomerId())
+            .orElseThrow(() -> new RuntimeException("Customer not found"));
+
+    Policy policy = restTemplete.getPolicyById("http://localhost:8763/policy"+purchase.getPolicyId(), PolicyNotFoundException.class);
+    if (policy == null) {
+        throw new RuntimeException("Policy not found");
+    }
+
+    PurchasedPolicy purchasedPolicy = new PurchasedPolicy();
+    purchasedPolicy.setCustomer(customer);
+    purchasedPolicy.setPolicyId(purchase.getpolicyId());
+    purchasedPolicy.setPurchaseDate(LocalDate.now());
+    purchasedPolicy.setPremium(policy.getPremium());
+    purchasedPolicy.setMaturityDate(purchasedPolicy.grtPurchaseDate().plusYears(policy.getMaturityDate())
+    purchasedPolicy.setStatus("Active");
+
+    purchasedRepository.save(purchasedPolicy);
+
+    return "Policy purchased successfully!";
+    restTemplete.put("http://localhost:8763/policy/update/"+purchase.getPolicyId(),PolicyNotFoundException.class);
+
+}
+}

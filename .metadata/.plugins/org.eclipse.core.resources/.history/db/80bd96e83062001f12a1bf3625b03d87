@@ -1,0 +1,11 @@
+package com.customerpolicy.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.customerpolicy.entity.Customer;
+@Repository
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
+	Optional<Customer> findByNameAndPassword(String name, String password);
+
+}

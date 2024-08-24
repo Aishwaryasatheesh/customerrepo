@@ -1,0 +1,26 @@
+package com.customerpolicy.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.customerpolicy.entity.Purchased;
+import com.customerpolicy.exception.CustomerNotFoundException;
+import com.customerpolicy.exception.PolicyNotFoundException;
+import com.customerpolicy.service.PurchaseService;
+
+@RestController
+@RequestMapping("/purchase")
+public class PurchasePolicyController {
+	@Autowired
+	PurchaseService purchaseService;
+	@PostMapping
+    public ResponseEntity<Purchased> PurchaseById(@RequestBody Purchased purchased) throws PolicyNotFoundException,CustomerNotFoundException {
+        return new ResponseEntity<>(purchaseService.makePurchase(purchase), HttpStatus.CREATED);
+    }
+
+	
+}

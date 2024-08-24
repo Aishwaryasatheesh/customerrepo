@@ -1,0 +1,30 @@
+package com.customerpolicy.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.customerpolicy.entity.Purchased;
+import com.customerpolicy.repository.PurchasedRepository;
+
+@Service
+public class PurchasedService {
+@Autowired
+private PurchasedRepository purchasedRepository;
+
+public Purchased createPurchased(Purchased purchased) {
+    return purchasedRepository.save(purchased);
+}
+public List<Purchased> getAllPurchases() {
+    return purchasedRepository.findAll();
+}
+
+// Get purchases by customer ID
+public List<Purchased> getPurchasesByCustomerId(Long customerId) {
+    return purchasedRepository.findAll().stream()
+            .filter(p -> p.getCustomer().getId().equals(customerId))
+            .toList();
+}
+
+}

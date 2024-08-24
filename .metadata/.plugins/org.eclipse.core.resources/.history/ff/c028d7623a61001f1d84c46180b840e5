@@ -1,0 +1,15 @@
+package com.customerpolicy.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.customerpolicy.entity.Purchased;
+import com.customerpolicy.repository.PurchasedRepository;
+
+@Service
+public class PurchasedService {
+@Autowired
+private PurchasedRepository purchaseRepository;
+
