@@ -34,6 +34,5 @@ public class PurchasedPolicy {
     private LocalDateTime MaturityDate;
     private LocalDateTime purchaseDate;
     private String status;
-
     
 }

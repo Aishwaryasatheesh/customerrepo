@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\aaish\eclipse-workspace\apigatewayapp2"/>
+			<item value="C:\Users\aaish\eclipse-workspace\eurekaserverapp"/>
 			<item value="C:\Users\aaish\Capstoneproject\customerpolicy"/>
 			<item value="C:\Users\aaish\Capstoneproject\policymodule1"/>
 		</list>

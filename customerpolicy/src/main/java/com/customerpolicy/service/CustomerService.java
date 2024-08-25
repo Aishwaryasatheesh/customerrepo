@@ -11,6 +11,7 @@ import com.customerpolicy.repository.CustomerRepository;
 public class CustomerService {
 	@Autowired
 	CustomerRepository customerRepository;
+	
 	public Customer registerCustomer(Customer customer) {
         return customerRepository.save(customer);
 	}

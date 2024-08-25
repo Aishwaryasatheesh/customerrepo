@@ -2,6 +2,7 @@ package com.customerpolicy.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,5 +52,8 @@ private RestTemplate restTemplate;
         purchasedPolicy.setStatus("Active");
 
         return purchasedPolicyRepository.save(purchasedPolicy);
+    }
+    public List<PurchasedPolicy> getPurchasedPoliciesByCustomerId(Long customerId) {
+        return PurchaseRepository.findByCustomerCustomerId(customerId);
     }
 }

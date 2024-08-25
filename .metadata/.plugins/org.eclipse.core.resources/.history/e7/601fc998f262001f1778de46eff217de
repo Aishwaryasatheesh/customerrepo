@@ -1,0 +1,12 @@
+package com.customerpolicy.bean;
+
+
+
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ApiResponse {
+	private String status;
+	  private Integer code;
+}

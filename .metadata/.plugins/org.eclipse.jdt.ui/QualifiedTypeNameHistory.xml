@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.customer.customerpolicy.entity.Customer"/>
-    <fullyQualifiedTypeName name="com.customer.customerpolicy.entity.Purchase"/>
-    <fullyQualifiedTypeName name="org.springframework.aop.ThrowsAdvice"/>
     <fullyQualifiedTypeName name="jakarta.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="com.customerpolicy.service.CustomerService"/>
     <fullyQualifiedTypeName name="ch.qos.logback.core.joran.spi.NoAutoStart"/>
     <fullyQualifiedTypeName name="java.lang.Boolean"/>
     <fullyQualifiedTypeName name="ch.qos.logback.core.net.LoginAuthenticator"/>
     <fullyQualifiedTypeName name="com.customerpolicy.repository.PurchasedRepository"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="com.customerpolicy.service.PurchasedService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ControllerAdvice"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ExceptionHandler"/>
@@ -28,7 +24,6 @@
     <fullyQualifiedTypeName name="java.lang.Long"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="jakarta.persistence.OneToMany"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
     <fullyQualifiedTypeName name="jakarta.persistence.FetchType"/>
     <fullyQualifiedTypeName name="com.policy.policymodule.exception.PolicyNotFoundException"/>
@@ -37,7 +32,6 @@
     <fullyQualifiedTypeName name="jakarta.transaction.Transactional"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.customerpolicy.repository.CustomerRepository"/>
-    <fullyQualifiedTypeName name="com.customerpolicy.repository.PurchaseRepository"/>
     <fullyQualifiedTypeName name="com.customerpolicy.entity.PurchasedPolicy"/>
     <fullyQualifiedTypeName name="com.customerpolicy.pojo.Policy"/>
     <fullyQualifiedTypeName name="com.customerpolicy.exception.PolicyNotFoundException"/>
@@ -46,11 +40,7 @@
     <fullyQualifiedTypeName name="com.customerpolicy.service.PurchasePolicyService"/>
     <fullyQualifiedTypeName name="com.customerpolicy.pojo.PurchasePolicyRequest"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
-    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
-    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.ToString"/>
-    <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.query.EqlParser.Datetime_expressionContext"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
     <fullyQualifiedTypeName name="org.springframework.web.client.RestTemplate"/>
@@ -60,4 +50,14 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.customerpolicy.bean.ApiResponse"/>
+    <fullyQualifiedTypeName name="com.customerpolicy.repository.PurchaseRepository"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.cloud.netflix.eureka.server.EnableEurekaServer"/>
+    <fullyQualifiedTypeName name="org.springframework.cloud.netflix.eureka.EnableEurekaClient"/>
+    <fullyQualifiedTypeName name="org.springframework.cloud.client.discovery.EnableDiscoveryClient"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
 </qualifiedTypeNameHistroy>
