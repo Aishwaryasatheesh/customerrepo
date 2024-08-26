@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,10 +29,13 @@ public class PurchasedPolicy {
     @ManyToOne
     @JoinColumn(name = "customerId")
     private Customer customer;
-    
+    @NotNull(message = "Policy ID is required")
     private Long policyId;
+    @NotNull(message = "Premium is required")
     private Double premium;
+    @NotNull(message = "Maturitydate is required")
     private LocalDateTime MaturityDate;
+    @NotNull(message = "purchaseDate is required")
     private LocalDateTime purchaseDate;
     private String status;
     

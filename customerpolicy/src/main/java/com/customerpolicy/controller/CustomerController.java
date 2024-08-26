@@ -15,6 +15,7 @@ import com.customerpolicy.exception.CustomerNotFoundException;
 import com.customerpolicy.service.CustomerService;
 
 import ch.qos.logback.core.net.LoginAuthenticator;
+import jakarta.validation.Valid;
 
 @RestController
 public class CustomerController {
@@ -22,12 +23,12 @@ public class CustomerController {
 CustomerService customerService;
 
 @PostMapping("/register/customer")
-public ResponseEntity<Customer> registerCustomer(@RequestBody Customer customer) {
+public ResponseEntity<Customer> registerCustomer(@Valid @RequestBody Customer customer) {
     Customer registeredCustomer = customerService.registerCustomer(customer);
     return new ResponseEntity<>(registeredCustomer, HttpStatus.CREATED);
 }
 @PostMapping("/customer/login")
-public ResponseEntity<Customer> login(@RequestBody LoginRequest loginRequest) throws CustomerNotFoundException {
+public ResponseEntity<Customer> login(@Valid @RequestBody LoginRequest loginRequest) throws CustomerNotFoundException {
     Customer customer = customerService.login(loginRequest.getEmail(), loginRequest.getPassword());
     return new ResponseEntity<>(customer, HttpStatus.OK);
 }

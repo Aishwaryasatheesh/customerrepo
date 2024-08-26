@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\aaish\Capstoneproject\customermodule"/>
 			<item value="C:\Users\aaish\eclipse-workspace\apigatewayapp2"/>
 			<item value="C:\Users\aaish\eclipse-workspace\eurekaserverapp"/>
 			<item value="C:\Users\aaish\Capstoneproject\customerpolicy"/>
@@ -17,6 +18,14 @@
 		</list>
 	</section>
 	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
 	</section>
 	<section name="org.eclipse.m2e.core.pom.dependencies">
 	</section>

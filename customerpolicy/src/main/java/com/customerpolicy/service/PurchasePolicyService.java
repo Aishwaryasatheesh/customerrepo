@@ -29,20 +29,20 @@ private RestTemplate restTemplate;
     @Autowired
     private PurchaseRepository purchasedPolicyRepository;
 
-    private final String policyServiceUrl = "http://localhost:8763/app1/policy"; // Adjust URL as needed
+    private final String policyServiceUrl = "http://localhost:8763/app1/policy/view"; 
 
     public PurchasedPolicy purchasePolicy(Long customerId, Long policyId, PurchasePolicyRequest request) throws Exception {
-        // Fetch customer details
+      
         Customer customer = customerRepository.findById(customerId)
             .orElseThrow(() -> new RuntimeException("Customer not found"));
 
-        // Fetch policy details using RestTemplate
+       
         Policy policy = restTemplate.getForObject(policyServiceUrl + "/" + policyId, Policy.class);
         if (policy == null) {
             throw new RuntimeException("Policy not found");
         }
 
-        // Create and save the purchased policy
+        
         PurchasedPolicy purchasedPolicy = new PurchasedPolicy();
         purchasedPolicy.setCustomer(customer);
         purchasedPolicy.setPolicyId(policyId);
@@ -53,7 +53,11 @@ private RestTemplate restTemplate;
 
         return purchasedPolicyRepository.save(purchasedPolicy);
     }
-    public List<PurchasedPolicy> getPurchasedPoliciesByCustomerId(Long customerId) {
-        return PurchaseRepository.findByCustomerCustomerId(customerId);
-    }
+public List<PurchasedPolicy> viewOwnPolicy(Long customerId) throws CustomerNotFoundException {
+        Customer customer = customerRepository.findById(customerId).orElse(null);
+        if(customer==null)
+    		throw new CustomerNotFoundException("Customer not found ");
+        return purchasedPolicyRepository.findByCustomer(customer);
+        
+    }	
 }

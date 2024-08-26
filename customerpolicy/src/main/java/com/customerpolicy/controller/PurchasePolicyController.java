@@ -20,14 +20,15 @@ import com.customerpolicy.exception.CustomerNotFoundException;
 import com.customerpolicy.exception.PolicyNotFoundException;
 import com.customerpolicy.service.PurchasePolicyService;
 
+import jakarta.validation.Valid;
+
 @RestController
-@RequestMapping("/purchase")
+@RequestMapping
 public class PurchasePolicyController {
 	@Autowired
 	PurchasePolicyService purchasePolicyService;
-	
-	@PostMapping("/{customerId}/{policyId}")
-	public ResponseEntity<?> purchasePolicy(@PathVariable Long customerId, @PathVariable Long policyId, @RequestBody PurchasePolicyRequest request) {
+	@PostMapping("/purchasepolicy/{customerId}/{policyId}")
+	public ResponseEntity<?> purchasePolicy( @PathVariable Long customerId, @PathVariable Long policyId,@Valid @RequestBody PurchasePolicyRequest request) {
 	    try {
 	        PurchasedPolicy purchasedPolicy = purchasePolicyService.purchasePolicy(customerId, policyId, request);
 	        return new ResponseEntity<>(purchasedPolicy, HttpStatus.CREATED);
@@ -35,14 +36,9 @@ public class PurchasePolicyController {
 	        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 	    }
 	}
-
-
-	@GetMapping("/{customerId}/viewpoliciesdetails")
-    public ResponseEntity<List<PurchasedPolicy>> getPurchasedPolicies(@PathVariable Long customerId) {
-        List<PurchasedPolicy> purchasedPolicies = purchasePolicyService.getPurchasedPoliciesByCustomerId(customerId);
-        if (purchasedPolicies.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(purchasedPolicies, HttpStatus.OK);
-    }
+    
+	 @GetMapping("/customer/{customerId}")
+	    public List<PurchasedPolicy> viewOwnPolicy (@PathVariable Long customerId) throws CustomerNotFoundException{
+	        return purchasePolicyService.viewOwnPolicy(customerId);
+	    }
 }

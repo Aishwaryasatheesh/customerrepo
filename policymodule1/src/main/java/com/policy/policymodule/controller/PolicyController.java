@@ -20,6 +20,8 @@ import com.policy.policymodule.entity.Policy;
 import com.policy.policymodule.exception.PolicyNotFoundException;
 import com.policy.policymodule.service.PolicyService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/policy")
 public class PolicyController {
@@ -27,7 +29,7 @@ public class PolicyController {
 	 private PolicyService policyService;
 
 	 @PostMapping
-	    public ResponseEntity<Policy> addPolicy(@RequestBody Policy policy) {
+	    public ResponseEntity<Policy> addPolicy(@Valid @RequestBody Policy policy) {
 		policy = policyService.addPolicy(policy);
 	        return new ResponseEntity<Policy>(policy, HttpStatus.OK);
 	    }
