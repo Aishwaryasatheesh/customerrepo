@@ -1,15 +1,19 @@
 package com.customerpolicy.exception;
 
-import java.time.LocalDateTime;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 
 import com.customerpolicy.bean.ApiResponse;
 
@@ -18,11 +22,10 @@ import com.customerpolicy.bean.ApiResponse;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	@ExceptionHandler(CustomerNotFoundException.class)
-	public ResponseEntity<ApiResponse> hadlebookNotFoundException(CustomerNotFoundException ex)
-	{
-		ApiResponse response=new ApiResponse(ex.getMessage(), 404);
-		return new ResponseEntity<ApiResponse>(response,HttpStatus.NOT_FOUND);
-	}
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<String> handleCustomerNotFoundException(CustomerNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 	@ExceptionHandler(PolicyNotFoundException.class)
 	public ResponseEntity<ApiResponse> hadlePurchaseNotFoundException(PolicyNotFoundException ex)
 	{
@@ -30,11 +33,24 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<ApiResponse>(response,HttpStatus.NOT_FOUND);
 	}
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(error -> 
-            errors.put(error.getField(), error.getDefaultMessage()));
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+
+    public ResponseEntity<ApiResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex){
+
+    	 List<ObjectError> errors = ex.getBindingResult().getAllErrors();
+         Map<String, String> map = new HashMap<>();
+         errors.forEach((error) -> {
+             String key = ((FieldError) error).getField();
+             String val = error.getDefaultMessage();
+             map.put(key, val);
+         });
+    	ApiResponse response = new ApiResponse(map.toString(), 404);
+
+		return new ResponseEntity<ApiResponse>(response, HttpStatus.NOT_FOUND);
+
     }
-	
+	@ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<String> handleGenericException(Exception ex) {
+        return new ResponseEntity<>("An error occurred: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

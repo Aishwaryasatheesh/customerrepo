@@ -26,6 +26,7 @@ public class Policy {
     private String policyName;
     @NotBlank(message = "Coverage type is required")
     private String coverageType;
+    @NotBlank(message="Description is required") 
     private String description;
     @NotNull(message = "Premium is required")
     private double premium;

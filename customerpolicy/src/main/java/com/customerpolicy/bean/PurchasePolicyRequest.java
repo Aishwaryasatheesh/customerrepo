@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PurchasePolicyRequest {
+	
 	 private Long customerId;
 	    private Long policyId;
 	    private double premium;

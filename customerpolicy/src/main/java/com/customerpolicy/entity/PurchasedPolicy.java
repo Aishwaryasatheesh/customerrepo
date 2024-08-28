@@ -3,6 +3,8 @@ package com.customerpolicy.entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,14 +29,16 @@ public class PurchasedPolicy {
     private Long purchasedId;
     
     @ManyToOne
-    @JoinColumn(name = "customerId")
-    private Customer customer;
+    @JoinColumn(name = "customer_Id")
+    @JsonIgnore
+    @NotNull(message = "customerId should not be null")
+    		private Customer customer;
     @NotNull(message = "Policy ID is required")
     private Long policyId;
     @NotNull(message = "Premium is required")
     private Double premium;
     @NotNull(message = "Maturitydate is required")
-    private LocalDateTime MaturityDate;
+    private LocalDateTime maturityDate;
     @NotNull(message = "purchaseDate is required")
     private LocalDateTime purchaseDate;
     private String status;

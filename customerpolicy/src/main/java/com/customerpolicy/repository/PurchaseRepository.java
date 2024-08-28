@@ -9,5 +9,9 @@ import com.customerpolicy.entity.Customer;
 import com.customerpolicy.entity.PurchasedPolicy;
 @Repository
 	public interface PurchaseRepository extends JpaRepository<PurchasedPolicy, Long> {
-	List<PurchasedPolicy> findByCustomer(Customer customer);
+	//List<PurchasedPolicy> findByCustomerCustomerId(Customer customer);
+
+	//List<PurchasedPolicy> findByCustomer(Customer customer);
+	 List<PurchasedPolicy> findByCustomer(Customer customer);
+
 	}

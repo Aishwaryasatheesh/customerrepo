@@ -28,7 +28,7 @@ import lombok.ToString;
 public class Customer {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-@NotNull(message = "Customer ID is required")
+
 private Long customerId;
 @NotNull(message = "Name is required")
 @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
@@ -37,6 +37,7 @@ private String name;
 @Email(message = "Email should be valid")
 private String email;
 @NotNull(message = "Password is required")
+@Size(min = 3, message = "Password should have at least 6 characters")
 private String password;
 @NotNull(message = "Address is required")
 private String address;

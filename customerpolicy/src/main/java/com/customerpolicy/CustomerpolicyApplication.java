@@ -3,7 +3,7 @@ package com.customerpolicy;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,9 +15,13 @@ public class CustomerpolicyApplication {
 		SpringApplication.run(CustomerpolicyApplication.class, args);
 	}
 	@Bean
-	public RestTemplate getRestTemplate()
-	{
-		return new RestTemplate();
-	}
 
+	@LoadBalanced
+
+	public RestTemplate getRestTemplate() {
+
+		return new RestTemplate();
+
+	}
+ 
 }
